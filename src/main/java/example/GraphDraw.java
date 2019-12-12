@@ -18,6 +18,17 @@ public class GraphDraw extends JFrame {
     ArrayList<Node> nodes;
     ArrayList<edge> edges;
 
+    int getIndex(String id) {
+        if (nodes == null) return -1;
+        for (int i=0; i<nodes.size();i++) {
+            if (nodes.get(i).name.equals(id)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     public GraphDraw() { //Constructor
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         nodes = new ArrayList<Node>();
@@ -101,43 +112,69 @@ class testGraphDraw {
         frame.setVisible(true);
 
         Node node = buildTDrawableTree(frame);
-        DrawTree.draw(node, 5);
+        DrawTree.draw(node, 20);
 
     }
 
 
     private static Node buildTDrawableTree(GraphDraw graphDraw) {
-        int i=0;
+        int i=1;
         DrawableNode root = new DrawableNode(graphDraw, i++);
         root.setOffset(500);
         root.setLevel(0);
 
-        DrawableNode neighbour1 = new DrawableNode(graphDraw, i++);
-        DrawableNode neighbour2 = new DrawableNode(graphDraw, i++);
+        Node neighbour1 = new DrawableNode(graphDraw, i++);
+        Node neighbour2 = new DrawableNode(graphDraw, i++);
         Node neighbour3 = new DrawableNode(graphDraw, i++);
 
-        DrawableNode neighbour2_1 = new DrawableNode(graphDraw, i++);
-        DrawableNode neighbour2_2 = new DrawableNode(graphDraw, i++);
-        DrawableNode neighbour3_1 = new DrawableNode(graphDraw, i++);
-        DrawableNode neighbour3_2 = new DrawableNode(graphDraw, i++);
-        DrawableNode neighbour3_3 = new DrawableNode(graphDraw, i++);
-        DrawableNode neighbour2_2_1 = new DrawableNode(graphDraw, i++);
-        DrawableNode neighbour3_2_1 = new DrawableNode(graphDraw, i++);
+        Node neighbour2_1 = new DrawableNode(graphDraw, i++);
+        Node neighbour2_2 = new DrawableNode(graphDraw, i++);
+
+        Node neighbour3_1 = new DrawableNode(graphDraw, i++);
+        Node neighbour3_2 = new DrawableNode(graphDraw, i++);
+        Node neighbour3_3 = new DrawableNode(graphDraw, i++);
+
+        Node neighbour2_2_1 = new DrawableNode(graphDraw, i++);
+        Node neighbour3_2_1 = new DrawableNode(graphDraw, i++);
+
 
         root.addNeighbour(neighbour1);
         root.addNeighbour(neighbour2);
         root.addNeighbour(neighbour3);
 
-
         neighbour2.addNeighbour(neighbour2_1);
         neighbour2.addNeighbour(neighbour2_2);
-
         neighbour3.addNeighbour(neighbour3_1);
         neighbour3.addNeighbour(neighbour3_2);
         neighbour3.addNeighbour(neighbour3_3);
 
+        DrawableNode neighbour3_3_1 = new DrawableNode(graphDraw, i++);
+        DrawableNode neighbour3_3_2 = new DrawableNode(graphDraw, i++);
+        DrawableNode neighbour3_3_3 = new DrawableNode(graphDraw, i++);
+        DrawableNode neighbour3_3_4 = new DrawableNode(graphDraw, i++);
+        Node neighbour2_2_1_1 = new DrawableNode(graphDraw, i++);
+        Node neighbour2_2_1_2 = new DrawableNode(graphDraw, i++);
+
+        DrawableNode neighbour3_3_3_1 = new DrawableNode(graphDraw, i++);
+        DrawableNode neighbour3_3_3_2 = new DrawableNode(graphDraw, i++);
+
+
+        neighbour3_3.addNeighbour(neighbour3_3_1);
+        neighbour3_3.addNeighbour(neighbour3_3_2);
+        neighbour3_3.addNeighbour(neighbour3_3_3);
+        neighbour3_3.addNeighbour(neighbour3_3_4);
+
+
+
+        neighbour3_3_3.addNeighbour(neighbour3_3_3_1);
+        neighbour3_3_3.addNeighbour(neighbour3_3_3_2);
+
+
         neighbour2_2.addNeighbour(neighbour2_2_1);
         neighbour3_2.addNeighbour(neighbour3_2_1);
+
+        neighbour2_2_1.addNeighbour(neighbour2_2_1_1);
+        neighbour2_2_1.addNeighbour(neighbour2_2_1_2);
 
 
         //cycles

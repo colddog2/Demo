@@ -31,7 +31,17 @@ public class DrawableNode extends Node {
     void draw() {
         int y = (getLevel() + 1) * 100;
         frame.addNode(String.valueOf(id), x, y );
-        if (parent != null)
-            frame.addEdge(parent.id, id);
+
+        if (parent == null) {
+            return;
+        }
+
+        int parentIndex = frame.getIndex(String.valueOf(parent.id));
+        int thisIndex = frame.getIndex(String.valueOf(id));
+
+        if (parentIndex == -1){
+            return;
+        }
+        frame.addEdge(parentIndex, thisIndex);
     }
 }
