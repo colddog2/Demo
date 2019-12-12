@@ -7,12 +7,20 @@ public class Node {
     List<Node> neighbours = new ArrayList<>();
     Integer level;
     int id;
+    Node parent;
 
     Node(int id) {
         this.id = id;
+        this.parent = null;
     }
 
     void addNeighbour(Node neighbour) {
+        if (level != null)
+            neighbour.setLevel(level + 1);
+
+        if (neighbour.parent == null)
+            neighbour.parent = this;
+
         neighbours.add(neighbour);
     }
 
@@ -29,6 +37,6 @@ public class Node {
     }
 
     void draw() {
-        System.out.println("i am node "+id);
+        System.out.println("i am node " + id);
     }
 }

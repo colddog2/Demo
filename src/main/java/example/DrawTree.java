@@ -41,7 +41,7 @@ public class DrawTree {
             numDrawn++;
 
             for (Node neighbour: current.getNeighbours()) {
-                if (neighbour.getLevel() == null) {
+                if (neighbour.getLevel() == null || neighbour.getLevel() > current.getLevel()) {
                     neighbour.setLevel(current.getLevel() + 1);
                     numberOfSeen++;
                     queue.add(neighbour);

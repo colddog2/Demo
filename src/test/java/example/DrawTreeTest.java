@@ -34,9 +34,10 @@ public class DrawTreeTest {
     }
 
     private static Node buildTree() {
-        int i=1;
+        int i=0;
         Node root = new Node(i++);
 
+        root.setLevel(0);
         Node neighbour1 = new Node(i++);
         Node neighbour2 = new Node(i++);
         Node neighbour3 = new Node(i++);
